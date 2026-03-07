@@ -2,6 +2,6 @@
 
     <background android:drawable="@android:color/black"/>
 
-    <foreground android:drawable="@android:drawable/sym_def_app_icon"/>
+    <foreground android:drawable="@android:drawable/IN_AI_logo"/>
 
 </adaptive-icon>
