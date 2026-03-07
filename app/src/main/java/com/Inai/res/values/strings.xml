@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">IN_AI</string>
+
+    <string name="send">Send</string>
+    <string name="copy">Copy</string>
+    <string name="ask_ai">Ask AI</string>
+
+</resources>
