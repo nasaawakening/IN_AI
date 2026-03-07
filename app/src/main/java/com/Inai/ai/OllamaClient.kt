@@ -7,6 +7,7 @@ import java.io.IOException
 object OllamaClient {
 
     fun ask(
+        model: String,
         prompt: String,
         onResult: (String) -> Unit
     ) {
@@ -15,8 +16,9 @@ object OllamaClient {
 
         val json = JSONObject()
 
-        json.put("model", "inai")
+        json.put("model", model)
         json.put("prompt", prompt)
+        json.put("stream", false)
 
         val body = RequestBody.create(
             MediaType.parse("application/json"),
@@ -42,13 +44,11 @@ object OllamaClient {
                 ) {
 
                     val result =
-                        response.body()
-                            ?.string()
+                        response.body()?.string()
 
                     if (result != null) {
 
-                        val obj =
-                            JSONObject(result)
+                        val obj = JSONObject(result)
 
                         val text =
                             obj.getString("response")
