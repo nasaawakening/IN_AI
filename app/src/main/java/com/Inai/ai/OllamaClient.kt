@@ -6,19 +6,23 @@ import java.io.IOException
 
 object OllamaClient {
 
-    fun ask(
-        model: String,
+    fun streamResponse(
         prompt: String,
-        onResult: (String) -> Unit
+        onToken: (String) -> Unit
     ) {
 
         val client = OkHttpClient()
 
         val json = JSONObject()
 
-        json.put("model", model)
+        // MODEL YANG DIGUNAKAN
+        json.put("model", "inai")
+
+        // PROMPT AI
         json.put("prompt", prompt)
-        json.put("stream", false)
+
+        // 🔥 AKTIFKAN STREAMING
+        json.put("stream", true)
 
         val body = RequestBody.create(
             MediaType.parse("application/json"),
@@ -30,8 +34,8 @@ object OllamaClient {
             .post(body)
             .build()
 
-        client.newCall(request)
-            .enqueue(object : Callback {
+        client.newCall(request).enqueue(
+            object : Callback {
 
                 override fun onFailure(
                     call: Call,
@@ -43,23 +47,26 @@ object OllamaClient {
                     response: Response
                 ) {
 
-                    val result =
-                        response.body()?.string()
+                    val reader =
+                        response.body!!
+                            .charStream()
+                            .buffered()
 
-                    if (result != null) {
+                    reader.forEachLine {
 
-                        val obj = JSONObject(result)
+                        val obj = JSONObject(it)
 
-                        val text =
+                        val token =
                             obj.getString("response")
 
-                        onResult(text)
+                        onToken(token)
 
                     }
 
                 }
 
-            })
+            }
+        )
 
     }
 
