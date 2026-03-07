@@ -19,20 +19,6 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
-      - name: Download wrapper
-        run: |
-          mkdir -p gradle/wrapper
-          curl -L https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
+      - run: chmod +x gradlew
 
-      - name: Fix permissions
-        run: |
-          chmod +x gradlew
-          chmod 644 gradle/wrapper/gradle-wrapper.jar
-
-      - name: Build
-        run: ./gradlew assembleDebug
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: IN_AI_APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+      - run: ./gradlew assembleDebug
