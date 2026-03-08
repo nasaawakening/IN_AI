@@ -1,15 +1,12 @@
 <resources>
 
-    <style name="Theme.INAI" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <style name="Theme.INAI" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
 
     <style name="Theme.INAI.Splash" parent="Theme.SplashScreen">
-
         <item name="windowSplashScreenBackground">@drawable/ic_launcher_background</item>
-
         <item name="windowSplashScreenAnimatedIcon">@drawable/in_ai_logo</item>
-
         <item name="postSplashScreenTheme">@style/Theme.INAI</item>
-
     </style>
 
 </resources>
