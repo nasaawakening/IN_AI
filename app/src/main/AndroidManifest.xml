@@ -17,9 +17,9 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/in_ai_logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="IN_AI"
-        android:roundIcon="@mipmap/in_ai_logo"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.INAI"
         android:usesCleartextTraffic="true">
