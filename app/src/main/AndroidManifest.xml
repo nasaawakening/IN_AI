@@ -21,7 +21,7 @@
         android:label="IN_AI"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.INAI"
+        android:theme="@style/Theme.INAI.Splash"
         android:usesCleartextTraffic="true">
 
         <!-- MAIN ACTIVITY -->
